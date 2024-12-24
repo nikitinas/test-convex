@@ -14,18 +14,22 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {tasks?.map(({ _id, text, isCompleted }) => (
-        <div key={_id} className="flex items-center">
-          <input
-            type="checkbox"
-            id={_id}
-            className="mr-2"
-            checked={isCompleted}
-            onChange={() => handleCheckboxChange(_id, isCompleted)}
-          />
-          <label htmlFor={_id}>{text}</label>
-        </div>
-      ))}
+      <div className="task-list">
+        {tasks?.map(({ _id, text, isCompleted }) => (
+          <div key={_id} className="task-item flex items-center p-2 mb-2 border-b border-gray-300">
+            <input
+              type="checkbox"
+              id={_id}
+              className="mr-2"
+              checked={isCompleted}
+              onChange={() => handleCheckboxChange(_id, isCompleted)}
+            />
+            <label htmlFor={_id} className={`task-text ${isCompleted ? 'line-through text-gray-500' : ''}`}>
+              {text}
+            </label>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }

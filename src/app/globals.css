@@ -19,3 +19,28 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+  /* Smooth transition for background color */
+}
+
+.task-item:hover {
+  background-color: #f0f0f0;
+  /* Highlight color on hover */
+}
+
+.task-text {
+  font-size: 16px;
+  color: #333;
+}
+
+.task-text.line-through {
+  text-decoration: line-through;
+  color: #999;
+}

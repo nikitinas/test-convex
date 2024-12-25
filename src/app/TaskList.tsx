@@ -6,9 +6,14 @@ import { Id } from '../../convex/_generated/dataModel';
 const TaskList = () => {
     const tasks = useQuery(api.tasks.get);
     const updateTask = useMutation(api.tasks.update);
+    const deleteTask = useMutation(api.tasks.deleteTask);
 
     const handleCheckboxChange = async (taskId: Id<"tasks">, isCompleted: boolean) => {
         await updateTask({ id: taskId, isCompleted: !isCompleted });
+    };
+
+    const handleDeleteTask = async (taskId: Id<"tasks">) => {
+        await deleteTask({ id: taskId });
     };
 
     return (
@@ -26,6 +31,12 @@ const TaskList = () => {
                         <label htmlFor={_id} className={`task-text ${isCompleted ? 'line-through text-gray-500' : ''}`}>
                             {text}
                         </label>
+                        <button
+                            onClick={() => handleDeleteTask(_id)}
+                            className="ml-2 text-red-500 hover:text-red-700"
+                        >
+                            Delete
+                        </button>
                     </div>
                 ))}
             </div>

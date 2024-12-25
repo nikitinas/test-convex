@@ -35,3 +35,12 @@ export const insert = mutation({
         await ctx.db.insert("tasks", { userId, text, isCompleted: false });
     },
 });
+
+export const deleteTask = mutation({
+    args: {
+        id: v.id("tasks"),
+    },
+    handler: async ({ db }, { id }) => {
+        await db.delete(id); // Delete the task by its ID
+    },
+});

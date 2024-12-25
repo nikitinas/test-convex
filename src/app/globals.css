@@ -44,3 +44,24 @@ body {
   text-decoration: line-through;
   color: #999;
 }
+
+.sign-in-button {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sign-in-button:hover {
+  background-color: #357ab8;
+  transform: scale(1.05);
+}
+
+.sign-in-button:active {
+  background-color: #2c5a8a;
+  transform: scale(0.95);
+}

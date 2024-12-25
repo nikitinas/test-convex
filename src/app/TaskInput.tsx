@@ -13,12 +13,19 @@ const TaskInput = () => {
         }
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleInsertTask();
+        }
+    };
+
     return (
         <div>
             <input
                 type="text"
                 value={taskText}
                 onChange={(e) => setTaskText(e.target.value)}
+                onKeyDown={handleKeyDown}
                 placeholder="Enter task text"
                 className="task-input mb-2"
             />

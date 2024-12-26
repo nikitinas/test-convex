@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuthActions } from "@convex-dev/auth/react";
+
 export function LoginForm({
     className,
     ...props
@@ -24,6 +25,7 @@ export function LoginForm({
         console.log(`Signing in with ${provider}`);
         void signIn(provider, { redirectTo: "/" });
     };
+
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
             {step === "signIn" ? (
@@ -94,14 +96,19 @@ export function LoginForm({
                         </CardContent>
                     </Card>
                     <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary  ">
-                        Наживая эти кнопки, вы принимаете <a href="#">Правила использования</a>{" "}
+                        Нажимая эти кнопки, вы принимаете <a href="#">Правила использования</a>{" "}
                         и <a href="#">Политику конфиденциальности</a>.
                     </div>
                 </>
             ) : (
                 <div>
-                    <p>Check you email {email} and click on the link to sign in.</p>
-                    <Button onClick={() => setStep("signIn")}>Back to sign in</Button>
+                    <p>Проверьте почту <strong>{email}</strong> и нажмите в письме на кнопку для подтверждения входа.</p>
+                    <a href="#" onClick={() => setStep("signIn")} className="text-blue-500 hover:underline flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 mr-1">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Вернуться к способам входа
+                    </a>
                 </div>
             )}
         </div >

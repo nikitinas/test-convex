@@ -3,6 +3,7 @@ import Google from "@auth/core/providers/google";
 import VK from "@auth/core/providers/vk";
 import Yandex from "@auth/core/providers/yandex";
 import { convexAuth } from "@convex-dev/auth/server";
+import Resend from "@auth/core/providers/resend";
 
 const apiVersion = "5.131"
 
@@ -12,6 +13,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
     GitHub,
     Yandex,
     Google,
+    Resend,
     {
       ...VK({ checks: [] }), // Fix: PKCE is unsupported for server-side authorization
       ...{

@@ -1,5 +1,6 @@
 import { ProfileCallback } from "@auth/core/providers";
 import GitHub from "@auth/core/providers/github";
+import Google from "@auth/core/providers/google";
 import VK, { VkProfile } from "@auth/core/providers/vk";
 import Yandex from "@auth/core/providers/yandex";
 import { convexAuth } from "@convex-dev/auth/server";
@@ -11,6 +12,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
   providers: [
     GitHub,
     Yandex,
+    Google,
     {
       ...VK({ checks: [] }), // Fix: PKCE is unsupported for server-side authorization
       token: {

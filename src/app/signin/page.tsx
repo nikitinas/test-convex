@@ -2,6 +2,8 @@
 
 import { useAuthActions } from "@convex-dev/auth/react";
 
+const providers = ["github", "yandex", "vk", "google"]
+
 export default function SignIn() {
     const { signIn } = useAuthActions();
 
@@ -13,24 +15,15 @@ export default function SignIn() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <button
-                onClick={() => handleSignIn("github")} // Updated to use the new handler
-                className="sign-in-button"
-            >
-                Sign in with GitHub
-            </button>
-            <button
-                onClick={() => handleSignIn("yandex")} // Updated to use the new handler
-                className="sign-in-button"
-            >
-                Sign in with Yandex
-            </button>
-            <button
-                onClick={() => handleSignIn("vk")} // Updated to use the new handler
-                className="sign-in-button"
-            >
-                Sign in with VK
-            </button>
-        </main >
+            {providers.map((provider) => (
+                <button
+                    key={provider}
+                    onClick={() => handleSignIn(provider)} // Updated to use the new handler
+                    className="sign-in-button"
+                >
+                    Sign in with {provider}
+                </button>
+            ))}
+        </main>
     );
 }

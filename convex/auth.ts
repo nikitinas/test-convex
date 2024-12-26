@@ -4,16 +4,23 @@ import VK from "@auth/core/providers/vk";
 import Yandex from "@auth/core/providers/yandex";
 import { convexAuth } from "@convex-dev/auth/server";
 import Resend from "@auth/core/providers/resend";
+import { sendVerificationRequest } from "./authSendRequest";
 
 const apiVersion = "5.131"
 
+console.log("Email server: ", process.env.EMAIL_SERVER);
+console.log("Email from: ", process.env.EMAIL_FROM);
 
 export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
   providers: [
     GitHub,
     Yandex,
     Google,
-    Resend,
+    Resend({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+      sendVerificationRequest: sendVerificationRequest
+    }),
     {
       ...VK({ checks: [] }), // Fix: PKCE is unsupported for server-side authorization
       ...{

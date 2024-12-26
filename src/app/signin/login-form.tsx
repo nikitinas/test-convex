@@ -59,7 +59,7 @@ export function LoginForm({
                                 </div>
                                 <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
                                     <span className="relative z-10 bg-background px-2 text-muted-foreground">
-                                        Или через почту
+                                        или через почту
                                     </span>
                                 </div>
                                 <form onSubmit={(event) => {
@@ -79,7 +79,6 @@ export function LoginForm({
                                 }}>
                                     <div className="grid gap-6">
                                         <div className="grid gap-2">
-                                            <Label htmlFor="email">Email</Label>
                                             <Input
                                                 name="email"
                                                 type="email"
